@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { EB_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
 import { faqs } from "@/data/landingData";
+import { Analytics } from "@vercel/analytics/next";
 
 const ebGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -155,7 +156,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="overflow-x-hidden antialiased">{children}</body>
+      <body className="overflow-x-hidden antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
